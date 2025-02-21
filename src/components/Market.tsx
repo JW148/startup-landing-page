@@ -36,8 +36,8 @@ export function Market() {
               Our Competitive Advantage
             </h3>
             <p className="text-muted-foreground mb-4">
-              Why our startup stands out in this market and how we're positioned
-              for success.
+              Why our startup stands out in this market and how we&apos;re
+              positioned for success.
             </p>
             <ul className="space-y-2">
               <li className="flex items-start">

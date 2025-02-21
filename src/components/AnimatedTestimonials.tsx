@@ -1,38 +1,42 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { useEffect, useState } from "react"
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const testimonials = [
   {
-    quote: "This solution has transformed our business operations. We've seen a 200% increase in efficiency.",
+    quote:
+      "This solution has transformed our business operations. We've seen a 200% increase in efficiency.",
     name: "John Doe",
     title: "CEO of TechCorp",
     image: "/placeholder.svg",
   },
   {
-    quote: "The ROI we've experienced with this product is unprecedented. It's a game-changer.",
+    quote:
+      "The ROI we've experienced with this product is unprecedented. It's a game-changer.",
     name: "Jane Smith",
     title: "CTO of InnovateCo",
     image: "/placeholder.svg",
   },
   {
-    quote: "Implementation was seamless, and the results were immediate. Highly recommended.",
+    quote:
+      "Implementation was seamless, and the results were immediate. Highly recommended.",
     name: "Alex Johnson",
     title: "Director of Operations, Enterprise Co",
     image: "/placeholder.svg",
   },
-]
+];
 
 export function AnimatedTestimonials() {
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % testimonials.length)
-    }, 5000)
-    return () => clearInterval(interval)
-  }, [])
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="relative h-[400px] w-full overflow-hidden bg-background">
@@ -48,17 +52,19 @@ export function AnimatedTestimonials() {
               }}
               transition={{ duration: 0.5 }}
               className={`absolute inset-0 flex flex-col items-center justify-center ${
-                currentIndex === idx ? "pointer-events-auto" : "pointer-events-none"
+                currentIndex === idx
+                  ? "pointer-events-auto"
+                  : "pointer-events-none"
               }`}
             >
               <div className="text-center">
                 <p className="relative text-lg md:text-xl text-muted-foreground mb-4">
-                  <span className="text-3xl text-primary">"</span>
+                  <span className="text-3xl text-primary">&quot;</span>
                   {testimonial.quote}
-                  <span className="text-3xl text-primary">"</span>
+                  <span className="text-3xl text-primary">&quot;</span>
                 </p>
                 <div className="mt-4">
-                  <img
+                  <Image
                     src={testimonial.image || "/placeholder.svg"}
                     alt={testimonial.name}
                     className="w-16 h-16 rounded-full mx-auto mb-4"
@@ -76,11 +82,12 @@ export function AnimatedTestimonials() {
           <button
             key={idx}
             onClick={() => setCurrentIndex(idx)}
-            className={`w-2 h-2 rounded-full transition-colors ${currentIndex === idx ? "bg-primary" : "bg-muted"}`}
+            className={`w-2 h-2 rounded-full transition-colors ${
+              currentIndex === idx ? "bg-primary" : "bg-muted"
+            }`}
           />
         ))}
       </div>
     </div>
-  )
+  );
 }
-
